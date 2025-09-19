@@ -486,6 +486,29 @@ text-align: left; /* Добавляем выравнивание по левом
     background-color: var(--primary-color);
 }
 
+.illustration-image, .project-image {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.illustration-image.loaded, .project-image.loaded {
+    opacity: 1;
+}
+
+/* Прелоадер */
+.image-placeholder {
+    background: #f0f0f0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 200px;
+}
+
+.image-placeholder::after {
+    content: "Загрузка...";
+    color: #999;
+}
+
 /* Анимация поднятия иллюстрации при наведении */
 .illustration-item {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -769,7 +792,6 @@ section.section-visible {
 
 /* Мобильная адаптация */
 @media (max-width: 768px) {
-
     /* Убираем эффект печатания текста */
     .typing-line.first-line,
     .typing-line.second-line {

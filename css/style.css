@@ -548,7 +548,7 @@ text-align: left; /* Добавляем выравнивание по левом
 }
 
 .close-modal:hover {
-    color: #ff6b8b;
+    color: #DB4437;
 }
 
 .caption {
@@ -802,11 +802,6 @@ section.section-visible {
         grid-template-columns: 1fr;
     }
     
-    nav ul {
-        gap: 0.2rem;
-        font-size: 0.8rem;
-    }
-    
     section {
         padding: 7rem 1.5rem 2rem;
     }
@@ -851,7 +846,7 @@ section.section-visible {
     /* Навигация для мобильных */
     nav ul {
         flex-wrap: wrap;
-        gap: 0.5rem;
+        gap: 0.2rem;
         justify-content: center;
     }
     
@@ -876,11 +871,6 @@ section.section-visible {
     
     .typing-container {
         font-size: 0.9rem;
-    }
-    
-    .home-gif {
-        width: 150px !important;
-        margin-top: 1rem;
     }
     
     .flying-cursor {
@@ -975,11 +965,11 @@ section.section-visible {
     }
     
     nav ul {
-        gap: 0.3rem;
+        gap: 0.1rem;
     }
     
     nav a {
-        font-size: 0.8rem;
+        font-size: 0.6rem;
         padding: 0.3rem 0.6rem;
     }
 }

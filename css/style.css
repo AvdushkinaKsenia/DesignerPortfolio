@@ -765,8 +765,27 @@ section.section-visible {
     transform: translateY(0);
 }
 
-/* Адаптивность */
+
+
+/* Мобильная адаптация */
 @media (max-width: 768px) {
+
+    /* Убираем эффект печатания текста */
+    .typing-line.first-line,
+    .typing-line.second-line {
+        animation: none;
+        width: 100%;
+        white-space: normal;
+    }
+    
+    .typing-container {
+        display: block;
+    }
+    
+    .typing-line {
+        margin-bottom: 0.5rem;
+    }
+    
     #about .content {
         grid-template-columns: 1fr;
     }
@@ -815,6 +834,176 @@ section.section-visible {
 
     .specialization-list {
         gap: 0.8rem;
+    }
+
+    /* Уменьшаем отступы секций */
+    section {
+        padding: 5rem 1rem 2rem;
+        min-height: auto;
+    }
+    
+    /* Уменьшаем размер заголовков */
+    h2 {
+        font-size: 2.5rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    /* Навигация для мобильных */
+    nav ul {
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        justify-content: center;
+    }
+    
+    nav a {
+        font-size: 0.9rem;
+        padding: 0.4rem 0.8rem;
+    }
+    
+    /* Главное окно - уменьшаем размер и отступы */
+    #home .window {
+        margin: 0 10px;
+        transform: scale(0.95);
+    }
+    
+    .window-content {
+        padding: 1.5rem;
+    }
+    
+    h1 {
+        font-size: 1.8rem;
+    }
+    
+    .typing-container {
+        font-size: 0.9rem;
+    }
+    
+    .home-gif {
+        width: 150px !important;
+        margin-top: 1rem;
+    }
+    
+    .flying-cursor {
+        display: none; /* Скрываем летающий курсор на мобильных */
+    }
+    
+    /* Секция "Обо мне" - меняем layout на колонку */
+    #about .content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .about-image .window {
+        max-width: 100%;
+        margin: 0 auto;
+    }
+    
+    .specialization-item {
+        font-size: 0.9rem;
+        padding: 0.3rem 1rem;
+    }
+    
+    /* Секция проектов - меняем карточки на колонку */
+    .project-item {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .project-info {
+        opacity: 1; /* Всегда показываем описание */
+        transform: translateX(0); /* Убираем анимацию появления */
+        padding: 1.5rem;
+    }
+    
+    .project-image {
+        width: 100%;
+        max-width: 100%;
+    }
+    
+    /* Секция иллюстраций - меняем на 2 колонки */
+    .folder-content {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+        padding: 1rem;
+    }
+    
+    /* Контакты - уменьшаем размер иконок */
+    .social-links {
+        gap: 0.8rem;
+    }
+    
+    .social-link {
+        width: 50px;
+        height: 50px;
+        font-size: 1.5rem;
+    }
+    
+    .contact-info {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    /* Еще более мелкие экраны */
+    h2 {
+        font-size: 2rem;
+    }
+    
+    .window-content {
+        padding: 1rem;
+    }
+    
+    h1 {
+        font-size: 1.5rem;
+    }
+    
+    .folder-content {
+        grid-template-columns: 1fr;
+    }
+    
+    .specialization-list {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .skills-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .skill-card {
+        padding: 1.5rem;
+    }
+    
+    nav ul {
+        gap: 0.3rem;
+    }
+    
+    nav a {
+        font-size: 0.8rem;
+        padding: 0.3rem 0.6rem;
+    }
+}
+
+/* Отключаем hover-эффекты на тач-устройствах */
+@media (hover: none) {
+    .project-item:hover .project-image {
+        transform: none;
+    }
+    
+    .illustration-item:hover {
+        transform: none;
+        box-shadow: 0 5px 15px var(--shadow-color);
+    }
+    
+    .social-link:hover {
+        transform: none;
+        background-color: transparent;
+        color: var(--text-color);
+    }
+    
+    .specialization-list .specialization-item:hover {
+        transform: scale(1) !important;
+        background: rgba(0, 0, 0, 0.05) !important;
     }
 }
 

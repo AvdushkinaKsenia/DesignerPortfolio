@@ -1,0 +1,823 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+:root {
+    --primary-color: #ffffff;
+    --secondary-color: #f8f9fa;
+    --accent-color: #ff6b8b;
+    --text-color: #333333;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    --glass-bg: rgba(255, 255, 255, 0.8);
+    --border-radius: 24px;
+    --border-radius-small: 16px;
+
+    --gmail-color: #DB4437;
+    --telegram-color: #0088cc;
+    --vk-color: #4a76a8;
+    --whatsapp-color: #25D366;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    cursor: url(https://cur.cursors-4u.net/cursors/cur-4/cur330.cur), auto;
+    font-size: 1.2rem;
+}
+
+a {
+    cursor: url(https://cur.cursors-4u.net/cursors/cur-4/cur328.cur), auto;
+    color: #878787;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+/* Стили для хедера с эффектом стекла */
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(5px);
+    box-shadow: 0 2px 10px var(--shadow-color);
+    z-index: 1000;
+    padding: 1rem 2rem;
+    border-radius: 0 0 var(--border-radius) var(--border-radius);
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    gap: 2rem;
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+}
+
+nav a:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+nav a:focus {
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+/* Общие стили для секций */
+section {
+    padding: 5rem 2rem;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+h1 {
+    font-size: 2.2rem;
+}
+
+h2 {
+    font-size: 4rem;
+    margin-bottom: 2rem;
+    color: var(--text-color);
+    text-align: center;
+}
+
+/* Стили для псевдо-окна Windows */
+.window {
+    background-color: var(--primary-color);
+    border-radius: var(--border-radius);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    max-width: 800px;
+    margin: 0 auto;
+    transform: scale(0.9);
+    opacity: 0;
+    animation: windowOpen 1s ease-out forwards;
+    animation-delay: 0.3s;
+}
+
+@keyframes windowOpen {
+    0% {
+        transform: scale(0.9) translateY(20px);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1) translateY(0);
+        opacity: 1;
+    }
+}
+
+.window-header {
+    background-color: var(--secondary-color);
+    padding: 0.8rem 1rem;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #eaeaea;
+    justify-content: center; /* Добавляем центрирование по горизонтали */
+    position: relative; /* Для позиционирования кнопок */
+}
+
+.window-buttons {
+    display: flex;
+    gap: 0.5rem;
+    margin-right: 1rem;
+    position: absolute;
+    left: 1rem; /* Отступ слева */
+}
+
+.window-button {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.window-button:hover {
+    transform: scale(1.2);
+}
+
+.window-button.close:hover {
+    background-color: #ff3b30 !important;
+}
+
+.window-button.minimize:hover {
+    background-color: #ffcc00 !important;
+}
+
+.window-button.maximize:hover {
+    background-color: #28cd41 !important;
+}
+
+.close {
+    background-color: #ff5f56;
+}
+
+.minimize {
+    background-color: #ffbd2e;
+}
+
+.maximize {
+    background-color: #27ca3f;
+}
+
+.window-title {
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-align: center;
+    flex-grow: 1;
+}
+
+.window-content {
+padding: 2rem;
+line-height: 1.8;
+text-align: left; /* Добавляем выравнивание по левому краю */
+}
+
+.typing-line {
+    overflow: hidden;
+    white-space: nowrap;
+    margin: 0;
+    width: 0;
+}
+
+.typing-line.first-line {
+    animation: typing-first 1.2s steps(40, end) forwards, step-end 1s;
+}
+
+.typing-line.second-line {
+    animation: typing-second 1.2s steps(30, end) 1.5s forwards, step-end infinite 1s;
+}
+
+@keyframes typing-first {
+    to { width: 100% }
+}
+
+@keyframes typing-second {
+    to { width: 100% }
+}
+
+/* После завершения анимации */
+.typing-line.first-line {
+    animation: typing-first 1.5s steps(40, end) forwards;
+}
+
+.typing-line.second-line {
+    animation: typing-second 1.5s steps(30, end) 1.5s forwards;
+}
+
+.flying-cursor {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    width: 80px;
+    height: 80px;
+    z-index: 100;
+    animation: float 3s ease-in-out infinite;
+    pointer-events: none;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0) rotate(5deg);
+    }
+    50% {
+        transform: translateY(-15px) rotate(-5deg);
+    }
+}
+
+/* Стили для главного экрана */
+#home {
+    background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+    text-align: center;
+}
+
+/* Стили для раздела "Обо мне" - ИЗМЕНЕНО */
+#about .container {
+    display: flex;
+    flex-direction: column;
+}
+
+#about .content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+}
+
+.about-text {
+    order: 2; /* Текст справа */
+}
+
+.about-image {
+    position: relative;
+    order: 1; /* Фото слева */
+}
+
+.about-image img {
+    width: 100%; /* Фото занимает всю ширину контейнера */
+    height: auto; /* Сохраняем пропорции */
+    box-shadow: 0 10px 30px var(--shadow-color);
+    border-radius: 0 0 12px 12px;
+}
+
+.about-image .window {
+    max-width: 350px; /* Ограничиваем ширину окна с фото */
+    width: auto; /* Автоматическая ширина для подстройки под контент */
+    border-radius: var(--border-radius-small);
+}
+
+.about-image .window-content {
+    padding: 0; /* Убираем отступы вокруг фото */
+    line-height: 0; /* Убираем межстрочный интервал */
+}
+
+.specialization-intro {
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+}
+
+.specialization-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+}
+
+.specialization-item {
+    display: flex;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.05);
+    padding: 0.3rem 1.2rem;
+    border-radius: 50px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.3s ease !important;
+    transform-origin: center;
+}
+
+.specialization-list .specialization-item:hover {
+    transform: scale(1.05) !important;
+    background: rgba(0, 0, 0, 0.1) !important;
+    z-index: 5;
+}
+.specialization-item.animate-in {
+    opacity: 1;
+    transform: translateY(0) scale(1) !important;
+}
+
+.about-description {
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+}
+
+
+/* Стили для раздела "Навыки" */
+#skills {
+    background-color: var(--secondary-color);
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.skill-card {
+    background-color: var(--primary-color);
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    box-shadow: 0 5px 15px var(--shadow-color);
+}
+
+.skill-card h3 {
+    color: #c5c5c5;
+    margin-bottom: 1.5rem;
+    font-size: 2.2rem;
+}
+
+.skill-item {
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+}
+
+.skill-item i {
+    color: var(--accent-color);
+    margin-right: 0.5rem;
+    font-size: 1.2rem;
+}
+
+
+/* Стили для раздела "Проекты" */
+#projects {
+    background-color: var(--primary-color);
+}
+
+.projects-container {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    max-width: 1100px;
+}
+
+.project-item {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.project-image {
+    width: 100%;
+    border-radius: var(--border-radius);
+    box-shadow: 0 5px 15px var(--shadow-color);
+    transition: transform 0.3s ease;
+}
+
+.project-item:hover .project-image {
+    transform: scale(1.02);
+    cursor: url(https://cur.cursors-4u.net/cursors/cur-4/cur328.cur), auto;
+}
+
+.project-info {
+    background-color: var(--secondary-color);
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    box-shadow: 0 5px 15px var(--shadow-color);
+    opacity: 0;
+    transform: translateX(20px);
+    transition: all 0.5s ease;
+}
+
+.project-item:hover .project-info {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.project-title {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+/* Стили для раздела "Иллюстрации" */
+#illustrations {
+    background-color: var(--secondary-color);
+}
+
+.folder {
+    background-color: var(--primary-color);
+    border-radius: var(--border-radius);
+    box-shadow: 0 10px 30px var(--shadow-color);
+    overflow: hidden;
+    margin: 0 auto;
+    max-width: 1000px;
+}
+
+.folder-header {
+    background-color: var(--secondary-color);
+    padding: 0.8rem 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #eaeaea;
+    cursor: url(https://cur.cursors-4u.net/cursors/cur-4/cur328.cur), auto;
+}
+
+.folder-title {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.folder-content {
+    padding: 2rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+}
+
+.illustration-item {
+    background-color: var(--primary-color);
+    border-radius: var(--border-radius-small);
+    overflow: hidden;
+    box-shadow: 0 5px 15px var(--shadow-color);
+    transition: transform 0.3s ease;
+    cursor: url(https://cur.cursors-4u.net/cursors/cur-4/cur328.cur), auto;
+}
+
+.illustration-item:hover {
+    transform: translateY(-5px);
+}
+
+.illustration-image {
+    width: 100%;
+    aspect-ratio: 1/1; /* Гарантирует квадратную форму */
+    object-fit: cover; /* Картинка заполняет пространство без искажений */
+}
+
+.illustration-name {
+    padding: 0.8rem;
+    text-align: center;
+    font-family: 'Courier New', monospace;
+    font-size: 0.9rem;
+    background-color: var(--primary-color);
+}
+
+/* Анимация поднятия иллюстрации при наведении */
+.illustration-item {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.illustration-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    z-index: 10;
+}
+
+/* Стили для полноэкранного модального окна */
+.fullscreen-modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.95);
+    overflow: auto;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.fullscreen-modal.active {
+    display: block;
+    opacity: 1;
+}
+
+.modal-content {
+    margin: auto;
+    display: block;
+    max-width: 90%;
+    max-height: 80vh;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.9);
+    transition: transform 0.3s ease;
+    border-radius: 8px;
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.1);
+}
+
+.fullscreen-modal.active .modal-content {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.close-modal {
+    position: absolute;
+    top: 25px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+    z-index: 2001;
+}
+
+.close-modal:hover {
+    color: #ff6b8b;
+}
+
+.caption {
+    position: absolute;
+    bottom: 30px;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    color: #fff;
+    padding: 10px 0;
+    font-family: 'Courier New', monospace;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+
+/* Стили для раздела "Контакты" */
+#contact {
+    text-align: center;
+}
+
+.contact-info {
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+}
+
+/* Стили для социальных иконок */
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin: 2rem 0;
+    flex-wrap: wrap;
+}
+
+.social-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    color: var(--text-color);
+    font-size: 1.8rem;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+.social-link::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 100%);
+}
+
+.social-link:hover {
+    transform: translateY(-5px) scale(1.1);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.social-link i {
+    position: relative;
+    z-index: 1;
+}
+
+.social-link:hover {
+    transform: translateY(-5px);
+    background-color: var(--accent-color);
+    color: white;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.social-link.gmail:hover {
+    background-color: var(--gmail-color);
+}
+
+.social-link.telegram:hover {
+    background-color: var(--telegram-color);
+}
+
+.social-link.vk:hover {
+    background-color: var(--vk-color);
+}
+
+.social-link.whatsapp:hover {
+    background-color: var(--whatsapp-color);
+}
+
+/* Базовые анимации */
+.animate-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s ease;
+}
+
+.animate-in.animate-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.animate-text {
+    opacity: 0;
+    transform: translateX(-20px);
+    transition: all 0.8s ease;
+}
+
+.animate-text.animate-text {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Анимации для навыков */
+.skill-card {
+    opacity: 0;
+    transform: translateY(40px) scale(0.95);
+    transition: all 0.8s ease;
+}
+
+.skill-card.animate-in {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+.skill-card:nth-child(1) { transition-delay: 0.1s; }
+.skill-card:nth-child(2) { transition-delay: 0.2s; }
+.skill-card:nth-child(3) { transition-delay: 0.3s; }
+
+/* Анимации для проектов */
+.project-item {
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: all 0.8s ease;
+}
+
+.project-item.animate-in {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.project-item:nth-child(odd) {
+    transform: translateX(50px);
+}
+
+.project-item:nth-child(odd).animate-in {
+    transform: translateX(0);
+}
+
+.project-item:nth-child(1) { transition-delay: 0.1s; }
+.project-item:nth-child(2) { transition-delay: 0.2s; }
+.project-item:nth-child(3) { transition-delay: 0.3s; }
+.project-item:nth-child(4) { transition-delay: 0.4s; }
+.project-item:nth-child(5) { transition-delay: 0.5s; }
+.project-item:nth-child(6) { transition-delay: 0.6s; }
+
+/* Анимации для иллюстраций */
+.illustration-item {
+    opacity: 0;
+    transform: scale(0.8) rotate(5deg);
+    transition: all 0.6s ease;
+}
+
+.illustration-item.animate-in {
+    opacity: 1;
+    transform: scale(1) rotate(0) !important;
+}
+
+.illustration-item:hover {
+    transform: translateY(-5px) scale(1.01) !important;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    z-index: 10;
+}
+
+/* Анимации для текста в about */
+.specialization-intro {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.8s ease;
+}
+
+.specialization-intro.animate-text {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.about-description {
+    opacity: 0;
+    transform: translateY(25px);
+    transition: all 0.8s ease;
+}
+
+.about-description.animate-text {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.about-description:nth-child(1) { transition-delay: 0.2s; }
+.about-description:nth-child(2) { transition-delay: 0.4s; }
+.about-description:nth-child(3) { transition-delay: 0.6s; }
+
+/* Анимация для секций */
+section {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 1s ease;
+}
+
+section.section-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    #about .content {
+        grid-template-columns: 1fr;
+    }
+    
+    .about-text {
+        order: 2; /* Текст после фото в мобильной версии */
+    }
+    
+    .about-image {
+        order: 1; /* Фото перед текстом в мобильной версии */
+    }
+    
+    .project-item {
+        grid-template-columns: 1fr;
+    }
+    
+    nav ul {
+        gap: 0.2rem;
+        font-size: 0.8rem;
+    }
+    
+    section {
+        padding: 7rem 1.5rem 2rem;
+    }
+    
+    .folder-content {
+        grid-template-columns: 1fr;
+    }
+
+    .social-links {
+        gap: 1rem;
+    }
+    
+    .social-link {
+        width: 50px;
+        height: 50px;
+        font-size: 1.5rem;
+    }
+
+    .flying-cursor {
+        width: 60px;
+        height: 60px;
+        bottom: 10px;
+        right: 10px;
+    }
+
+    .specialization-list {
+        gap: 0.8rem;
+    }
+}
+
+.hidden {
+    display: none;
+}
